@@ -1,0 +1,515 @@
+Here's a detailed prompt you can give to an AI website builder like Lovable, Bolt, v0, Replit AI, or Cursor.
+
+
+
+---
+
+
+
+**Prompt:**
+
+
+
+> Build a modern, responsive web application called **Excel Email Extractor**.
+
+>
+
+> ## Purpose
+
+>
+
+> The application should allow users to upload an Excel (.xlsx or .xls) or CSV file and automatically generate a clean output containing only two columns:
+
+>
+
+> * **name**
+
+> * **email**
+
+>
+
+> The output should normalize inconsistent column names and split multiple email addresses into separate rows.
+
+>
+
+> ---
+
+>
+
+> ## Features
+
+>
+
+> ### 1. File Upload
+
+>
+
+> * Drag & Drop area
+
+> * Browse button
+
+> * Support:
+
+>
+
+>   * .xlsx
+
+>   * .xls
+
+>   * .csv
+
+>
+
+> Display filename after upload.
+
+>
+
+> ---
+
+>
+
+> ## 2. Automatic Column Detection
+
+>
+
+> Detect name columns regardless of capitalization or wording.
+
+>
+
+> Possible Name columns include:
+
+>
+
+> ```
+
+> Name
+
+
+
+> ```
+
+>
+
+> Detect Email columns including:
+
+>
+
+> ```
+
+> Emails 
+
+
+
+> ```
+
+>
+
+> And replace them to name and email  (in the final excel sheet) 
+
+>
+
+> ---
+
+>
+
+> ## 3. Data Cleaning
+
+>
+
+> Trim whitespace.
+
+>
+
+> Remove:
+
+>
+
+> * leading spaces
+
+> * trailing spaces
+
+> * duplicate spaces
+
+> * invisible characters
+
+>
+
+> Convert column headers to exactly:
+
+>
+
+> ```
+
+> name
+
+> email
+
+> ```
+
+>
+
+> (lowercase)
+
+>
+
+> ---
+
+>
+
+> ## 4. Multiple Email Detection
+
+>
+
+> If one cell contains multiple email addresses such as:
+
+>
+
+> ```
+
+> john@gmail.com;john@yahoo.com
+
+> ```
+
+>
+
+> or
+
+>
+
+> ```
+
+> john@gmail.com, john@yahoo.com
+
+> ```
+
+>
+
+> or
+
+>
+
+> ```
+
+> john@gmail.com | john@yahoo.com
+
+> ```
+
+>
+
+> or
+
+>
+
+> ```
+
+> john@gmail.com
+
+> john@yahoo.com
+
+> ```
+
+>
+
+> Then split them into separate rows:
+
+>
+
+> Example:
+
+>
+
+> Original
+
+>
+
+> | Name     | Email                                                                            |
+
+> | -------- | -------------------------------------------------------------------------------- |
+
+> | John Doe | [john@gmail.com](mailto:john@gmail.com); [john@yahoo.com](mailto:john@yahoo.com) |
+
+>
+
+> Output
+
+>
+
+> | name     | email                                   |
+
+> | -------- | --------------------------------------- |
+
+> | John Doe | [john@gmail.com](mailto:john@gmail.com) |
+
+> | John Doe | [john@yahoo.com](mailto:john@yahoo.com) |
+
+>
+
+> Support separators:
+
+>
+
+> * comma
+
+> * semicolon
+
+> * pipe
+
+> * slash
+
+> * newline
+
+>
+
+> ---
+
+>
+
+> ## 5. Email Validation
+
+>
+
+> Keep only valid email addresses.
+
+>
+
+> Ignore invalid values.
+
+>
+
+> Remove duplicates.
+
+>
+
+> Example:
+
+>
+
+> ```
+
+> john@gmail.com
+
+> john@gmail.com
+
+> ```
+
+>
+
+> becomes
+
+>
+
+> ```
+
+> john@gmail.com
+
+> ```
+
+>
+
+> ---
+
+>
+
+> ## 6. Preview Table
+
+>
+
+> After processing, display:
+
+>
+
+> | name | email |
+
+>
+
+> with:
+
+>
+
+> * pagination
+
+> * search
+
+> * sortable columns
+
+> * total rows count
+
+>
+
+> ---
+
+>
+
+> ## 7. Download Options
+
+>
+
+> Allow downloading as:
+
+>
+
+> * Excel (.xlsx)
+
+> * CSV
+
+>
+
+> Preserve only:
+
+>
+
+> ```
+
+> name
+
+> email
+
+> ```
+
+>
+
+> ---
+
+>
+
+> ## 8. Statistics
+
+>
+
+> Display:
+
+>
+
+> * Original rows
+
+> * Final rows
+
+> * Emails extracted
+
+> * Duplicate emails removed
+
+> * Invalid emails skipped
+
+>
+
+> ---
+
+>
+
+> ## 9. User Interface
+
+>
+
+> Clean SaaS-style dashboard.
+
+>
+
+> Include:
+
+>
+
+> * Upload card
+
+> * Progress indicator
+
+> * Processing animation
+
+> * Preview table
+
+> * Statistics cards
+
+> * Download buttons
+
+>
+
+> Use a modern design similar to Notion or Linear.
+
+>
+
+> Responsive for desktop and mobile.
+
+>
+
+> ---
+
+>
+
+
+
+>
+
+> ## 11. Recommended Tech Stack
+
+>
+
+> * React
+
+> * TypeScript
+
+> * Tailwind CSS
+
+> * SheetJS (xlsx) for Excel parsing
+
+> * PapaParse for CSV
+
+> * FileSaver.js for downloads
+
+>
+
+> ---
+
+
+
+>   ```
+
+>   cleaned_emails.xlsx
+
+>   ```
+
+> * Display processing time
+
+> * Highlight invalid emails in a processing report
+
+> * Show toast notifications for success/errors
+
+>
+
+> ---
+
+>
+
+> ## Processing Rules
+
+>
+
+> Input:
+
+>
+
+> | Full Name | Contact Email                                                                    | Phone      |
+
+> | --------- | -------------------------------------------------------------------------------- | ---------- |
+
+> | John Doe  | [john@gmail.com](mailto:john@gmail.com); [john@yahoo.com](mailto:john@yahoo.com) | 9999999999 |
+
+> | Alice     | [alice@gmail.com](mailto:alice@gmail.com)                                        | 8888888888 |
+
+>
+
+> Output:
+
+>
+
+> | name     | email                                     |
+
+> | -------- | ----------------------------------------- |
+
+> | John Doe | [john@gmail.com](mailto:john@gmail.com)   |
+
+> | John Doe | [john@yahoo.com](mailto:john@yahoo.com)   |
+
+> | Alice    | [alice@gmail.com](mailto:alice@gmail.com) |
+
+>
+
+> The application should perform all processing locally in the browser without uploading files to any server, ensuring user privacy.
